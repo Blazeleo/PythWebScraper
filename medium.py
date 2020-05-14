@@ -62,5 +62,5 @@ data = ama('https://www.amazon.in/s?i=computers&bbn=1375424031&rh=n%3A976392031%
 
 df = pd.DataFrame(data)
 df.to_csv('AmazonDell3.csv')
-df.to_excel('AmazonHp1.xlsx')
+df.to_excel('AmazonDell3.xlsx')
 print("Saved!")
