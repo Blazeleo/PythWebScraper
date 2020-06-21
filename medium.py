@@ -15,7 +15,7 @@ def ama(url):
     soup = BeautifulSoup(r.text, 'html.parser') #Get HTML content of the webpage
     table = [] #Table to store the laptop's data
 
-    #Page stores the div tag of the page so that we can iterate over products in multiple pages
+    #Page stores the div tag of the page so that we can iterate over products
     page = soup.find_all('div', class_='sg-col-20-of-24 s-result-item s-asin sg-col-0-of-12 sg-col-28-of-32 sg-col-16-of-20 sg-col sg-col-32-of-36 sg-col-12-of-16 sg-col-24-of-28')
     
     #Loop through the laptops in the page
