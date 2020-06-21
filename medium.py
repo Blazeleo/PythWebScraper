@@ -12,20 +12,24 @@ def ama(url):
         "Upgrade-Insecure-Requests": "1"
     }
     r = requests.get(url, headers=headers)
-    soup = BeautifulSoup(r.text, 'html.parser')
-    table = []
+    soup = BeautifulSoup(r.text, 'html.parser') #Get HTML content of the webpage
+    table = [] #Table to store the laptop's data
 
+    #Page stores the div tag of the page so that we can iterate over products in multiple pages
     page = soup.find_all('div', class_='sg-col-20-of-24 s-result-item s-asin sg-col-0-of-12 sg-col-28-of-32 sg-col-16-of-20 sg-col sg-col-32-of-36 sg-col-12-of-16 sg-col-24-of-28')
+    
+    #Loop through the laptops in the page
     for laptops in page:
         anchor = laptops.find('a')
         link = 'https://www.amazon.in' + anchor.get('href')
         s = requests.get(link, headers=headers)
-        porridge = BeautifulSoup(s.text, 'html.parser')
+        porridge = BeautifulSoup(s.text, 'html.parser') #HTML content of the laptop page
 
         prod_name = porridge.find(id='productTitle').text.strip()
 
-        main_table = porridge.find('div', class_='column col1').find('table')
+        main_table = porridge.find('div', class_='column col1').find('table') #get the data from the table with product specs
 
+        #Below code tries to extract data from each cell if it exists.
         try:
             prod_price = porridge.find(id='priceblock_ourprice').text
         except:
@@ -45,6 +49,7 @@ def ama(url):
         except:
             prod_DD = 'N/A'
 
+        #Product object contains all data of the laptop, which will be stored in the table
         product = {
             'Name': prod_name,
             'Price': prod_price,
@@ -61,6 +66,6 @@ data = ama('https://www.amazon.in/s?i=computers&bbn=1375424031&rh=n%3A976392031%
 #'https://www.amazon.in/s?bbn=4364642031&rh=n%3A976392031%2Cn%3A%211499764031%2Cn%3A%211499766031%2Cn%3A4364642031%2Cp_89%3ADell&dc&fst=as%3Aoff&qid=1588687953&rnid=3837712031&ref=lp_4364642031_nr_p_89_0')
 
 df = pd.DataFrame(data)
-df.to_csv('AmazonDell3.csv')
-df.to_excel('AmazonDell3.xlsx')
+df.to_csv('Amazon.csv')
+df.to_excel('Amazon.xlsx')
 print("Saved!")
