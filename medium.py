@@ -60,8 +60,13 @@ def ama(url):
         table.append(product)
     return table
 
+Site = 'https://www.amazon.in/s?i=computers&bbn=1375424031&rh=n%3A976392031%2Cn%3A976393031%2Cn%3A1375424031%2Cp_89' \
+       '%3AHP%2Cp_n_feature_thirteen_browse-bin%3A12598162031%7C12598163031%7C16757430031' \
+       '%2Cp_n_operating_system_browse-bin%3A7350855031%2Cp_n_pattern_browse-bin%3A8609969031%2Cp_n_feature_browse' \
+       '-bin%3A1485945031%2Cp_n_feature_fourteen_browse-bin%3A2917527031&dc&fst=as%3Aoff&qid=1589031568&rnid' \
+       '=2917524031&ref=sr_nr_p_n_feature_fourteen_browse-bin_2 '
 
-data = ama('https://www.amazon.in/s?i=computers&bbn=1375424031&rh=n%3A976392031%2Cn%3A976393031%2Cn%3A1375424031%2Cp_89%3AHP%2Cp_n_feature_thirteen_browse-bin%3A12598162031%7C12598163031%7C16757430031%2Cp_n_operating_system_browse-bin%3A7350855031%2Cp_n_pattern_browse-bin%3A8609969031%2Cp_n_feature_browse-bin%3A1485945031%2Cp_n_feature_fourteen_browse-bin%3A2917527031&dc&fst=as%3Aoff&qid=1589031568&rnid=2917524031&ref=sr_nr_p_n_feature_fourteen_browse-bin_2')
+data = ama(Site)
 
 #'https://www.amazon.in/s?bbn=4364642031&rh=n%3A976392031%2Cn%3A%211499764031%2Cn%3A%211499766031%2Cn%3A4364642031%2Cp_89%3ADell&dc&fst=as%3Aoff&qid=1588687953&rnid=3837712031&ref=lp_4364642031_nr_p_89_0')
 
